@@ -1,0 +1,33 @@
+{% extends  'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <div class="row bg-dark">
+        
+            {% for anime in animedesc %}
+            
+                <h3 class="text-danger shadow-lg p-3 mb-2 ">{{anime.title}}</h3>
+                <p class="justify-content-between shadow-lg text-white d-inline p-2"> MeanScore: {{anime.mean_score}} AverageScore: {{anime.average_score}}</p>
+                <p class="justify-content-between shadow-lg text-white d-inline p-2"> Genres: {{anime.genres}}</p>
+            
+                <div class="justify-content-between shadow-lg p-3 rounded">
+                    <p class="justify-content-between shadow-lg  text-white"> Description</p>
+                    <p class="justify-content-between shadow-lg text-white"> {{anime.description}}</p>
+                    <p class="justify-content-between shadow-lg text-white"> Episodes: {{anime.episodes}}</p>
+                    <p class="justify-content-between shadow-lg text-white"> Studios: {{anime.studios}}</p>
+                    <p class="justify-content-between shadow-lg text-white"> Popularity: {{anime.popularity}}</p> 
+                    <p class="justify-content-between shadow-lg text-white"> added in: {{anime.created_at}}</p>
+                </div>
+            <div class="row justify-content-start">
+                <div class="col-4">
+                    <a href="{% url 'post_update' anime.pk %}"><button class="btn btn-primary "> Edit </button></a> 
+                    <a href="{% url 'post_delete' anime.pk %}"><button class="btn btn-danger "> Delet </button> </a> 
+                </div>    
+            </div>
+            {% empty %}
+                    <li><h4 class="text-danger shadow-lg p-3 mb-2 ">Not found</h4></li>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

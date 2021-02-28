@@ -1,0 +1,49 @@
+{% extends  'base.html' %}
+{% block content %}
+
+    <div class="container">
+        <a href="{% url 'animeadd'%}"><h5 class="text-white justify-content-between shadow-lg p-3 rounded">Add anime </h5> </a>
+        <div class="row justify-content-md-center">
+            <div class=" justify-content-between shadow-lg p-3 mb-2 rounded">
+                <table class="table table-striped table-dark ">
+                    <thead>
+                        <tr>
+                        <th class="p-2" scope="col">Title</th>
+                        <th scope="col">Episodes</th>
+                        <th scope="col">Genres</th>
+                        <th scope="col">Your note</th>
+                        </tr>
+                    </thead>
+                
+                    {% for anime in animes %}
+                        <tbody>
+                            <tr>
+                                <td > <a href="{% url 'animedescription' anime.pk  %} ">{{anime.title}}</a> </td>
+                                <td>{{anime.episodes}}</td>
+                                <td>{{anime.genres}}</td>
+                                <td>{{anime.your_note}}</td>
+                                </tr>
+                        </tbody>
+                    {% empty %}
+                        <h5 class="text-white justify-content-between shadow-lg p-3 rounded">Not found</h5>
+                    {% endfor %}
+                </table>
+                
+                <div class="col-md-6 offset-md-5">
+                    <span class="step-links">
+                        {% if animes.has_previous %}
+                            <a class="text-white justify-content-between shadow-lg p-3 rounded" href="?page={{ animes.previous_page_number }}"> previous </a>
+                        {% endif %}
+                        <span class="current">
+                            {{ animes.number }} in {{ animes.paginator.num_pages }}
+                        </span>
+                    
+                        {% if animes.has_next %}
+                            <a class="text-white justify-content-between shadow-lg p-3 rounded" href="?page={{ animes.next_page_number }}">next</a>
+                        {% endif %}
+                    </span>
+                </div> 
+            </div>
+        </div>
+    </div>
+{% endblock %}

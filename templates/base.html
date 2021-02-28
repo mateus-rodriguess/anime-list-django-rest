@@ -1,0 +1,22 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Custom css-->
+    <link rel="stylesheet" type="text/css" href={% static 'css/bootstrap.css' %}>
+    <link rel="stylesheet" type="text/css" href={% static 'css/style.css' %}>
+    <title>{% block title %}{% endblock title %}</title>
+
+  </head>
+  <body>
+      {% block navbar %}
+        {% include 'main/navbar.html' %}
+      {% endblock navbar %}
+    
+      {% block content %}
+      {% endblock content %}
+  </body>
+</html>
