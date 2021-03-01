@@ -15,7 +15,7 @@ import os
 import rest_framework 
 import dj_database_url
 import django_heroku
-# variaveis de ambiente 
+# variavel de ambiente 
 from environs import Env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
