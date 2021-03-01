@@ -23,7 +23,7 @@ def token_user():
         print(f"token: {token}")
     except:
         print(traceback.format_exc())
-        print("verifica o arquivo ou nome e saia daqui")
+        print("verifica o user e a senha ")
         # sair
         sys.exit()
 
